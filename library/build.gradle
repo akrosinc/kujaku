@@ -39,7 +39,7 @@ publishing {
         Production(MavenPublication) {
             artifact("$buildDir/outputs/aar/library-release.aar")
             artifact(sourceJar)
-            groupId 'io.ona.kujaku'
+            groupId 'com.github.akrosinc'
             artifactId 'library'
             version this.version
 
@@ -59,29 +59,7 @@ publishing {
     }
 }
 
-bintray {
-    // Get Bintray credential from environment variable
-    user = System.getenv('BINTRAY_USER') // Get bintray User
-    key = System.getenv('BINTRAY_KEY') // Get bintray Secret Key
-    configurations = ['archives']
-    pkg {
-        repo = 'kujaku'
-        name = project.name
-        userOrg = 'ona'
-        licenses = ['Apache-2.0']
-        desc = 'Kujaku library'
-        websiteUrl = "https://ona.io"
-        publish = true
-        vcsUrl = "https://github.com/onaio/kujaku.git"
-        version {
-            name = this.version
-            desc = "Kujaku library version ${this.version}"
-            released = new Date()
-            vcsTag = this.version
-        }
-    }
-    publications = ['Production']
-}
+
 
 jacoco {
     toolVersion = jacocoVersion
