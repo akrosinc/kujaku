@@ -192,7 +192,7 @@ public class GoogleLocationClient extends BaseLocationClient implements Location
 
     @Override
     public boolean isProviderEnabled() {
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) &&
+        return locationManager != null && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) &&
                 locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
